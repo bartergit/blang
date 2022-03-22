@@ -1,0 +1,41 @@
+macro insta_A(name, _size)
+    Arr name = *(malloc(8 + 4) as *Arr);
+    name.size = _size;
+    name.start = malloc(4 * _size) as *int;
+end
+
+
+struct Arr{
+    int size;
+    *int start;
+}
+
+func get_ptr(Arr arr, int index) -> *int {
+    return shift(arr.start as *void, index * 4) as *int;
+}
+
+func at(Arr arr, int index) -> int {
+    return *get_ptr(arr, index);
+}
+
+func set(Arr arr, int index, int value) -> void {
+    *get_ptr(arr, index) = value;
+}
+
+func main() -> int {
+    A name = *(malloc(8) as *Arr);
+    insta_A(array, 10);
+    int index = 0;
+    while index < 10 {
+        set(array, index, index * index);
+        index = index + 1;
+    }
+    index = 0;
+    while index < 10 {
+        printd(index);
+        printd(at(array, index));
+        printf("\n");
+        index = index + 1;
+    }
+    return 0;
+}

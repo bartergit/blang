@@ -1,0 +1,6 @@
+func main() -> int {
+    int * p = @cast(void*, int*, malloc(8));
+    int c = @cast(bool, int, true);
+    @printf("%d haha", c);
+    return 0;
+}

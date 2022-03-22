@@ -1,0 +1,63 @@
+// sec_v
+// macro VecT(type) {
+//    Vec_${type}
+//} "asadad bbbb\"dddd"
+
+macro Vec(T, VecT)
+    struct VecT {
+        T* start;
+        int capacity;
+        int size;
+    }
+
+    func VecT() -> VecT{
+        T* start = alloc(sizeof(T) * 4);
+        VecT to_return = insta(VecT, start, 4, 0);
+        return to_return;
+    }
+
+    func push(VecT vec, T value) -> void {
+        if vec.size == vec.capacity {
+            int i = 0;
+            T* start = alloc(vec.size * 2);
+            while i < vec.size {
+                *(start + i) = *(vec.start + i);
+                i = i + 1;
+            }
+            vec.capacity = vec.size * 2;
+            free(vec.start);
+            vec.start = start;
+        }
+        *(vec.start + vec.size) = value;
+        vec.size = vec.size + 1;
+    }
+
+    func free() -> void {
+        free(vec.start);
+    }
+
+    func get(int ind) -> T {
+        return *(vec.start + ind);
+    }
+end
+
+macro mult(x,y)
+    x * y
+end
+
+macro dec(type, expr)
+    type s = expr;
+end
+
+func call(int x, int y) -> void {
+
+}
+
+func s(int x, bool s) -> int {
+    int b = mult(int, "sasa");
+    3 + 5;
+    call(3,2);
+    dec(bool*,  (3 * -2) * true)
+    int s = mult(3+5, divide(10, 2));
+    return 0;
+}

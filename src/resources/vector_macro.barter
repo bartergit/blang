@@ -1,0 +1,36 @@
+//macro VecT(type) {
+//    Vec_${type}
+//}
+
+macro Vec(T)
+    struct VecT {
+        T* start;
+        int capacity;
+        int size;
+    }
+    func VecT() -> VecT{
+        T* start = alloc(sizeof(T) * 4);
+        insta VecT to_return(start, 4, 0);
+        return to_return;
+    }
+
+    func push(VecT vec, T value){
+        if vec.size == vec.capacity {
+            int i = 0;
+            T* start = alloc(vec.size * 2);
+            while i < vec.size {
+                start[i] = vec.start[i];
+                i = i + 1;
+            }
+            vec.capacity = vec.size * 2;
+            free(vec.start);
+            vec.start = start;
+        }
+        vec.start[vec.size] = value;
+        vec.size = vec.size + 1;
+    }
+
+    func free(){
+        free(vec.start);
+    }
+}

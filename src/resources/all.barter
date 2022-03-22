@@ -1,0 +1,34 @@
+macro N {
+    12
+}
+
+macro sum(x,y) {
+    x + y
+}
+
+func two_params(int x, bool flag) -> void {
+    if flag or ! (-(x + 18) * 3 < 2) {
+        int echo = 19;
+    }
+    return;
+}
+
+func one_param(float y) -> float {
+    float z = 10.0;
+    while z < y {
+        y = y - 1.0;
+        z = z + 1.0;
+    }
+    return z;
+}
+
+func nothing() -> void {
+
+}
+
+func main() -> int {
+    int a = #N;
+    #sum(a, 1);
+    @printf("%d", 15);
+    return 0;
+}

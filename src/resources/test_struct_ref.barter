@@ -1,0 +1,11 @@
+struct A {
+    int x;
+    int y;
+}
+func s() -> A{
+}
+
+func main() -> int {
+    A a = s();
+    return 0;
+}

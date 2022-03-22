@@ -1,0 +1,15 @@
+macro for(declaration, condition, ...body){
+    declaration;
+    while condition {
+        {% for statement in body %}
+            {{statement}};
+        {% end %}
+    }
+}
+
+func main() -> int {
+    #for(int i = 0, i < 5,
+        printf("%d", i),
+        printf("%d", i)
+    )
+}
